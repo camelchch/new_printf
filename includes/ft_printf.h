@@ -74,6 +74,8 @@ void	con_XX(va_list args, t_data *data, char *foamat, int size);
 void	set_flags(t_data *fl, char *format, int size);
 void	set_print_oxu_hash(t_data *data, char *pre_fix);
 char	*ft_itoa_max(intmax_t n);
+char	*ft_itoa_short(short n);
+char	*ft_itoa_signchar(char n);
 char	*itoa_base(intmax_t nb, int from, int to);
 char	*itoa_hex(uintmax_t nb, char x);
 int		max_2(int x, int y);

@@ -87,7 +87,7 @@ void	set_flags(t_data *data, char *format, int size)
 		}
 		else if (format[i] == '.')
 		{
-			if ('0' <= format[i + 1] &&  format[i + 1] <= '9')
+			//if ('0' <= format[i + 1] &&  format[i + 1] <= '9')
 				data->precison = ft_atoi(format + 1 + i);
 			i = i + nb_digit(format + i + 1) + 1;
 		}
@@ -163,7 +163,7 @@ int		ft_printf(const char *restrict format, ...)
 /*
 int		main()
 {
-	ft_printf("%llx", 9223372036854775807);
+	ft_printf("%hd", 32768);
 	return (0);
 }
 */

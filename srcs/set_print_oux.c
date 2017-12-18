@@ -20,7 +20,7 @@ static	void	set_oxu(t_data *data, char *pre_fix)
 {
 	if (data->precison == -1)
 		data->no_pre = 1;
-	if (data->precison < (int)ft_strlen(data->ori))
+	if (!(data->ori[0] == '0' && !data->precison) && data->precison < (int)ft_strlen(data->ori))
 		data->precison = ft_strlen(data->ori);
 	if (data->ori[0] != '0' && ft_strchr(data->flags, '#'))
 	{
@@ -29,47 +29,54 @@ static	void	set_oxu(t_data *data, char *pre_fix)
 	}
 	else
 	{
-		data->len = max_3(data->width, ft_strlen(data->ori), data->precison);
-		data->blank = data->len - data->precison;
+		if (!(!data->width && data->precison <= 0 && data->ori[0] == '0'))
+		{
+			data->len = max_3(data->width, ft_strlen(data->ori), data->precison);
+			data->blank = data->len - data->precison;
+		}
 	}
 }
 
 static	void	go_right(t_data *data, char *pre_fix)
 {
-	if (!ft_strchr(data->flags, '-'))
+	if (ft_strchr(data->flags, '0') && data->no_pre)
 	{
-		if (ft_strchr(data->flags, '#') && data->no_pre)
+		if (ft_strchr(data->flags, '#'))
 		{
-			if (ft_strchr(data->flags, '0'))
-			{
 			ft_putstr(pre_fix);
 			ft_putnchar('0', data->len - ft_strlen(pre_fix) - ft_strlen(data->ori));
-			ft_putstr(data->ori);
-			}
-			else
-			{
-			ft_putnchar(' ', data->len - ft_strlen(pre_fix) - ft_strlen(data->ori));
-			ft_putstr(pre_fix);
-			ft_putstr(data->ori);
-			}
 		}
 		else
-		{
-			ft_putnchar(' ', data->blank);
-			if (ft_strchr(data->flags, '#'))
-				ft_putstr(pre_fix);
-			ft_putnchar('0', data->precison - ft_strlen(data->ori));
-			ft_putstr(data->ori);
-		}
+			ft_putnchar('0', data->len - ft_strlen(data->ori));
+		ft_putstr(data->ori);
+	}
+	else
+	{
+		ft_putnchar(' ', data->blank);
+		if (ft_strchr(data->flags, '#'))
+			ft_putstr(pre_fix);
+		ft_putnchar('0', data->precison - ft_strlen(data->ori));
+		ft_putstr(data->ori);
 	}
 }
 
 static	void	put_zero(t_data *data)
 {
 	if (data->no_pre)
-		ft_putnchar('0', data->len);
+	{
+		if (ft_strchr(data->flags, '0'))
+			ft_putnchar('0', data->len);
+		else
+		{
+			ft_putnchar(' ', data->len - 1);
+			ft_putchar('0');
+		}
+	}
 	else
-		ft_putnchar(' ', data->len);
+	{
+		ft_putnchar(' ', data->len - data->precison);
+		ft_putnchar('0', data->precison);
+	}
 }
 
 void	set_print_oxu_hash(t_data *data, char *pre_fix)
@@ -95,8 +102,10 @@ void	set_print_oxu_hash(t_data *data, char *pre_fix)
 	}
 	else
 	{
-		data->len = 0;
-		if (ft_strchr(data->flags, '#') && pre_fix[0] == 'o')
-		ft_putchar('0');
+		if (!data->precison && ft_strchr(data->flags, '#') && pre_fix[0] == '0' && ft_strlen(pre_fix) == 1)
+		{
+			ft_putchar('0');
+			data->len = 1;
+		}
 	}
 }
