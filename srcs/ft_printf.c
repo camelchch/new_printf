@@ -163,7 +163,7 @@ int		ft_printf(const char *restrict format, ...)
 /*
 int		main()
 {
-	ft_printf("%hd", 32768);
+	ft_printf("%5.0d", 0);
 	return (0);
 }
 */

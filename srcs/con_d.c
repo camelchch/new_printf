@@ -34,23 +34,66 @@ static	void	cast_nu_d(va_list args, t_data *data, char *format, int size)
 	else	if (data->cast == j)
 		data->ori = ft_itoa_max(va_arg(args, intmax_t));
 }
-
+/*
+   static	void	set_d(t_data *data)
+   {
+   if (data->precison == -1)
+   data->no_pre = 1;
+   if (!(data->ori[0] == '0' && !data->precison) && data->precison < (int)ft_strlen(data->ori))
+   data->precison = ft_strlen(data->ori);
+   if ((ft_strchr(data->flags, '+') || ft_strchr(data->flags, ' ')) && !(!data->ori[0] && !data->precison) && data->ori[0] != '-')
+   {
+   data->len = max_3(data->width, ft_strlen(data->ori) + 1, data->precison);
+   data->blank = data->len - data->precison - 1;
+   }
+   else
+   {
+   if (!(data->ori[0] == '0' && !data->precison))
+   {
+   data->len = max_3(data->width, ft_strlen(data->ori), data->precison);
+   data->blank = data->len - data->precison;
+   }
+   }
+   }
+   */
 static	void	set_d(t_data *data)
 {
 	if (data->precison == -1)
 		data->no_pre = 1;
-	if (!(data->ori[0] == '0' && !data->precison) && data->precison < (int)ft_strlen(data->ori))
-		data->precison = ft_strlen(data->ori);
-	if ((ft_strchr(data->flags, '+') || ft_strchr(data->flags, ' ')) && !(!data->ori[0] && !data->precison) && data->ori[0] != '-')
+	if (!(data->ori[0] == '0' && !data->precison))
 	{
-		data->len = max_3(data->width, ft_strlen(data->ori) + 1, data->precison);
-		data->blank = data->len - data->precison - 1;
+		if (data->ori[0] != '-' && data->precison < (int)ft_strlen(data->ori))
+
+			data->precison = ft_strlen(data->ori);
+		else if (data->ori[0] == '-' && data->precison < (int)ft_strlen(data->ori) -1)
+			data->precison = ft_strlen(data->ori) - 1;
+	}
+	if (!(data->ori[0] == '0' && !data->precison))
+	{
+		if (data->ori[0] != '-')
+		{
+			data->len = max_3(data->width, ft_strlen(data->ori), data->precison);
+			data->blank = data->len - data->precison;
+			if (ft_strchr(data->flags, ' ') || ft_strchr(data->flags, '+'))
+			{
+				if (data->len == data->precison)
+					data->len++;
+				else
+					data->blank--;
+			}
+		}
+		else
+		{
+			data->len = max_2(data->width, data->precison);
+			data->blank = data->len - data->precison;
+			if (data->len == (int)ft_strlen(data->ori) - 1)
+				data->len++;
+			else
+				data->blank--;
+		}
 	}
 	else
-	{
-		data->len = max_3(data->width, ft_strlen(data->ori), data->precison);
-		data->blank = data->len - data->precison;
-	}
+		data->len = data->width;
 }
 
 static	void	plus_blank(t_data *data)
@@ -82,39 +125,87 @@ static	void	go_right(t_data *data)
 	{
 		ft_putnchar(' ', data->blank);
 		plus_blank(data);
-		ft_putnchar('0', data->precison - ft_strlen(data->ori));
 		if (data->ori[0] == '-')
+		{
+			ft_putnchar('0', data->precison - ft_strlen(data->ori) + 1);
 			ft_putstr(data->ori + 1);
+		}
 		else
+		{
+			ft_putnchar('0', data->precison - ft_strlen(data->ori));
 			ft_putstr(data->ori);
+		}
 	}
 }
+
+static	void	put_zero(t_data *data)
+{
+	if (ft_strchr(data->flags, '0') && data->no_pre)
+	{
+		if (ft_strchr(data->flags, '+'))
+		{
+			ft_putchar('+');
+			ft_putnchar('0', data->len - 2);
+		}
+		else if (ft_strchr(data->flags, ' '))
+		{
+			ft_putchar(' ');
+			ft_putnchar('0', data->len - 2);
+		}
+		else
+			ft_putnchar('0', data->len - 1);
+		ft_putchar('0');
+	}
+	else
+	{
+		if (ft_strchr(data->flags, '+'))
+		{
+			ft_putchar('+');
+			data->blank = data->len - 1;
+		}
+		else if (ft_strchr(data->flags, ' '))
+		{
+			ft_putchar(' ');
+			data->blank = data->len - 1;
+		}
+		else
+		data->blank = data->len;
+		ft_putnchar(' ', data->blank);
+	}
+}
+
+
+
 
 static	void	set_print_d(t_data *data)
 {
 	set_d(data);
-	if (!((data->precison == 0 && data->ori[0] == '0') && !ft_strchr(data->flags, ' ') && !ft_strchr(data->flags, '+')))
+	//if (!((data->precison == 0 && data->ori[0] == '0') && !ft_strchr(data->flags, ' ') && !ft_strchr(data->flags, '+')))
+	if (data->len && !(data->ori[0] == '0' && !data->precison))
 	{
-		if (data->ori[0] == '0' && !data->precison)
-			plus_blank(data);
+		/*if (data->ori[0] == '0' && !data->precison)
+		  plus_blank(data);
+		  else
+		  {
+		  */
+		if (!ft_strchr(data->flags, '-'))
+			go_right(data);
 		else
 		{
-			if (!ft_strchr(data->flags, '-'))
-				go_right(data);
+			plus_blank(data);
+			if (data->ori[0] == '-')
+				ft_putnchar('0', data->precison - ft_strlen(data->ori) + 1);
 			else
-			{
-				plus_blank(data);
 				ft_putnchar('0', data->precison - ft_strlen(data->ori));
-				if (data->ori[0] == '-')
-					ft_putstr(data->ori + 1);
-				else
-					ft_putstr(data->ori);
-				ft_putnchar(' ', data->blank);
-			}
+			if (data->ori[0] == '-')
+				ft_putstr(data->ori + 1);
+			else
+				ft_putstr(data->ori);
+			ft_putnchar(' ', data->blank);
 		}
 	}
-	else
-		data->len = 0;
+	else if (data->len && data->ori[0] == '0')
+		put_zero(data);
 }
 
 void	con_d(va_list args, t_data *data, char *format, int size)
