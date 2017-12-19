@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/15 23:31:52 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/19 10:26:19 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	*ft_itoa_signchar(char n)
 {
 	char	*number;
 	int		len;
-	unsigned	cp_n;
+	unsigned	char	cp_n;
 
 	len = nb_dg(n);
 	if (!(number = (char *)malloc(len + 1)))

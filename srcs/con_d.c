@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/15 17:52:03 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/19 10:40:05 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static	void	set_d(t_data *data)
 {
 	if (data->precison == -1)
 		data->no_pre = 1;
-	if (data->precison < (int)ft_strlen(data->ori))
+	if (!(data->ori[0] == '0' && !data->precison) && data->precison < (int)ft_strlen(data->ori))
 		data->precison = ft_strlen(data->ori);
 	if ((ft_strchr(data->flags, '+') || ft_strchr(data->flags, ' ')) && !(!data->ori[0] && !data->precison) && data->ori[0] != '-')
 	{
