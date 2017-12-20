@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 17:09:10 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 17:14:06 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static	void	go_right(t_data *data, char *pre_fix)
 		else
 		ft_putnchar('0', data->precison - ft_strlen(data->ori) - ft_strlen(pre_fix));
 		}
+		else
 		ft_putnchar('0', data->precison - ft_strlen(data->ori));
 		ft_putstr(data->ori);
 	}

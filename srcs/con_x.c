@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 11:38:30 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 17:15:20 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static	void	cast_nu_X(va_list args, t_data *data, char *format, int size)
 	set_cast(data, format, size);
 	if (data->cast == z)
 		data->ori = itoa_hex(va_arg(args, size_t), 'X');
-	else if (data->cast == none || data->cast == hh)
+	else if (data->cast == none || data->cast == hh || data->cast == h)
 		data->ori = itoa_hex(va_arg(args, unsigned int), 'X');
 	else if (data->cast == l)
 		data->ori = itoa_hex(va_arg(args,unsigned long), 'X');
