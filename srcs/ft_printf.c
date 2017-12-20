@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 14:11:07 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 13:45:21 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 17:04:57 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,11 @@ int		ft_printf(const char *restrict format, ...)
 	}
 	return (nbr);
 }
-
 /*
 int		main()
 {
-	ft_printf("%.10d", -42);
+	ft_printf("test%#.4o et %02o %0#14.0o!!\n", 0012, 036, 12587499);
+	printf("test%#.4o et %02o %0#14.0o!!", 0012, 036, 12587499);
 	return (0);
 }
 */

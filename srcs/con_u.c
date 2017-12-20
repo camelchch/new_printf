@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 11:33:03 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 16:11:33 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static	void	cast_nu_u(va_list args, t_data *data, char *format, int size)
 {
 	set_cast(data, format, size);
 	if (data->cast == z)
-		data->ori = ft_itoa_max(va_arg(args, size_t));
-	else if (data->cast == none || data->cast == hh)
-		data->ori = ft_itoa_max(va_arg(args, unsigned int));
+		data->ori = ft_itoa_unmax(va_arg(args, size_t));
+	else if (data->cast == none || data->cast == hh || data->cast == h)
+		data->ori = ft_itoa_unmax(va_arg(args, unsigned int));
 	else if (data->cast == l)
 		data->ori = ft_itoa_unmax(va_arg(args,unsigned long));
 	else if (data->cast == ll)
-		data->ori = ft_itoa_max(va_arg(args, unsigned long long));
+		data->ori = ft_itoa_unmax(va_arg(args, unsigned long long));
 	else if (data->cast == j)
-		data->ori = ft_itoa_max(va_arg(args, uintmax_t));
+		data->ori = ft_itoa_unmax(va_arg(args, uintmax_t));
 }
 
 void	con_u(va_list args, t_data *data, char *format, int size)

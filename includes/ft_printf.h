@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:54:36 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 12:19:33 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 16:16:02 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*ft_itoa_max(intmax_t n);
 char	*ft_itoa_unmax(uintmax_t n);
 char	*ft_itoa_short(short n);
 char	*ft_itoa_signchar(char n);
-char	*itoa_base(intmax_t nb, int from, int to);
+char	*itoa_base(uintmax_t nb, int from, int to);
 char	*itoa_hex(uintmax_t nb, char x);
 int		max_2(int x, int y);
 int		max_3(int x, int y, int z);

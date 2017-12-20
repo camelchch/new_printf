@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/16 02:02:52 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 17:09:10 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,13 @@ static	void	go_right(t_data *data, char *pre_fix)
 	{
 		ft_putnchar(' ', data->blank);
 		if (ft_strchr(data->flags, '#'))
+		{
 			ft_putstr(pre_fix);
+		if (data->precison < data->len)
+		ft_putnchar('0', data->precison - ft_strlen(data->ori));
+		else
+		ft_putnchar('0', data->precison - ft_strlen(data->ori) - ft_strlen(pre_fix));
+		}
 		ft_putnchar('0', data->precison - ft_strlen(data->ori));
 		ft_putstr(data->ori);
 	}
@@ -68,14 +74,30 @@ static	void	put_zero(t_data *data)
 			ft_putnchar('0', data->len);
 		else
 		{
-			ft_putnchar(' ', data->len - 1);
-			ft_putchar('0');
+			if (!ft_strchr(data->flags, '-'))
+			{
+				ft_putnchar(' ', data->len - 1);
+				ft_putchar('0');
+			}
+			else
+			{
+				ft_putchar('0');
+				ft_putnchar(' ', data->len - 1);
+			}
 		}
 	}
 	else
 	{
-		ft_putnchar(' ', data->len - data->precison);
-		ft_putnchar('0', data->precison);
+		if (!ft_strchr(data->flags, '-'))
+		{
+			ft_putnchar(' ', data->len - data->precison);
+			ft_putnchar('0', data->precison);
+		}
+		else
+		{
+			ft_putnchar('0', data->precison);
+			ft_putnchar(' ', data->len - data->precison);
+		}
 	}
 }
 

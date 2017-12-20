@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 13:50:53 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 13:51:02 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 15:46:20 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,11 @@ static	void	set_d(t_data *data)
 	else
 		data->len = data->width;
 }
-
+/*
+static	void	put_sign(t_data)
+{
+}
+*/
 static	void	plus_blank(t_data *data)
 {
 	if (data->ori[0] != '-')
