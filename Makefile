@@ -6,7 +6,7 @@
 #    By: saxiao <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 14:39:08 by saxiao            #+#    #+#              #
-#    Updated: 2017/12/15 21:07:25 by saxiao           ###   ########.fr        #
+#    Updated: 2017/12/20 13:55:10 by saxiao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ INCLUDE = -Iincludes
 all: $(NAME)
 
 $(NAME):$(OBJS)
-	echo "nihao"
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
