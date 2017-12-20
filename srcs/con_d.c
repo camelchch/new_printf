@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/19 10:40:05 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 12:24:22 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,7 @@ static	void	cast_nu_d(va_list args, t_data *data, char *format, int size)
 	else	if (data->cast == j)
 		data->ori = ft_itoa_max(va_arg(args, intmax_t));
 }
-/*
-   static	void	set_d(t_data *data)
-   {
-   if (data->precison == -1)
-   data->no_pre = 1;
-   if (!(data->ori[0] == '0' && !data->precison) && data->precison < (int)ft_strlen(data->ori))
-   data->precison = ft_strlen(data->ori);
-   if ((ft_strchr(data->flags, '+') || ft_strchr(data->flags, ' ')) && !(!data->ori[0] && !data->precison) && data->ori[0] != '-')
-   {
-   data->len = max_3(data->width, ft_strlen(data->ori) + 1, data->precison);
-   data->blank = data->len - data->precison - 1;
-   }
-   else
-   {
-   if (!(data->ori[0] == '0' && !data->precison))
-   {
-   data->len = max_3(data->width, ft_strlen(data->ori), data->precison);
-   data->blank = data->len - data->precison;
-   }
-   }
-   }
-   */
+
 static	void	set_d(t_data *data)
 {
 	if (data->precison == -1)
@@ -174,20 +153,11 @@ static	void	put_zero(t_data *data)
 	}
 }
 
-
-
-
 static	void	set_print_d(t_data *data)
 {
 	set_d(data);
-	//if (!((data->precison == 0 && data->ori[0] == '0') && !ft_strchr(data->flags, ' ') && !ft_strchr(data->flags, '+')))
 	if (data->len && !(data->ori[0] == '0' && !data->precison))
 	{
-		/*if (data->ori[0] == '0' && !data->precison)
-		  plus_blank(data);
-		  else
-		  {
-		  */
 		if (!ft_strchr(data->flags, '-'))
 			go_right(data);
 		else

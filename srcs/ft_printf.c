@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 14:11:07 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/16 01:24:49 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 12:23:50 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ int		ft_printf(const char *restrict format, ...)
 /*
 int		main()
 {
-	ft_printf("%5.0d", 0);
+	ft_printf("%.10d", -42);
 	return (0);
 }
 */
