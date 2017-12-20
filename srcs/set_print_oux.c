@@ -24,7 +24,10 @@ static	void	set_oxu(t_data *data, char *pre_fix)
 		data->precison = ft_strlen(data->ori);
 	if (data->ori[0] != '0' && ft_strchr(data->flags, '#'))
 	{
+		if ((int)ft_strlen(data->ori) > data->precison)
 		data->len = max_3(data->width, ft_strlen(data->ori) + ft_strlen(pre_fix), data->precison);
+		else
+		data->len = max_3(data->width, ft_strlen(data->ori), data->precison + ft_strlen(pre_fix));
 		data->blank = data->len - data->precison - ft_strlen(pre_fix);
 	}
 	else

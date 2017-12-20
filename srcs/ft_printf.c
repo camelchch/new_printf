@@ -160,8 +160,8 @@ int		ft_printf(const char *restrict format, ...)
 /*
 int		main()
 {
-	ft_printf("test%#.4o et %02o %0#14.0o!!\n", 0012, 036, 12587499);
-	printf("test%#.4o et %02o %0#14.0o!!", 0012, 036, 12587499);
+//t_data data;
+printf("%-25p", NULL);
 	return (0);
 }
 */

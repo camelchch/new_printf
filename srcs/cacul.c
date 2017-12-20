@@ -69,7 +69,7 @@ static void	we_to_char(wchar_t we, char *c)
 		c[1] = (we >> 6) + 192;
 		c[2] = (we & 63) + 128;
 	}
-	else if(we <= 0x10ffff)
+	else if(we <= 0x1fffff)
 	{
 		c[0] = (we >> 18) + 240;
 		c[1] = (we >> 12) + 224;

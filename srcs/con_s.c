@@ -144,15 +144,15 @@ size_t	ft_wstrlen(wchar_t *we)
 	size_t	i;
 
 	i = 0;
-	while(*we++)
+	while(we && *we++)
 		i++;
 	return (i);
 }
 
 void	ft_putwstr(wchar_t *we)
 {
-	while(*we)
-		ft_putwstr(we++);
+	while(we && *we)
+		ft_putwchar(*we++);
 }
 
 static	void	set_print_s(t_data *data)
@@ -186,8 +186,8 @@ static	void	set_print_S(t_data *data, wchar_t *we)
 	nbr_l = 0;
 	if (data->precison == -1)
 		data->precison = ft_wstrlen(we);
-	if (data->precison > (int)ft_strlen(data->ori))
-		nbr_l = ft_strlen(data->ori);
+	if (data->precison > (int)ft_wstrlen(we))
+		nbr_l = ft_wstrlen(we);
 	else
 		nbr_l = data->precison;
 	data->len = max_2(data->width, nbr_l);
