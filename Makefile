@@ -6,7 +6,7 @@
 #    By: saxiao <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 14:39:08 by saxiao            #+#    #+#              #
-#    Updated: 2017/12/20 13:55:10 by saxiao           ###   ########.fr        #
+#    Updated: 2017/12/20 13:57:11 by saxiao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ $(NAME):$(OBJS)
 $(OBJS):$(SRC)
 	$(C) $(CFLAGS) $(LIB_INC) $(LIB_SRC)
 	$(C) $(CFLAGS) $(INCLUDE) $(SRC)
-
 
 clean:
 	rm -rf $(OBJS)
