@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conversin.c                                        :+:      :+:    :+:   */
+/*   con_d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 12:24:22 by saxiao           ###   ########.fr       */
+/*   Created: 2017/12/20 13:50:53 by saxiao            #+#    #+#             */
+/*   Updated: 2017/12/20 13:51:02 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static	void	set_d(t_data *data)
 	if (!(data->ori[0] == '0' && !data->precison))
 	{
 		if (data->ori[0] != '-' && data->precison < (int)ft_strlen(data->ori))
-
 			data->precison = ft_strlen(data->ori);
 		else if (data->ori[0] == '-' && data->precison < (int)ft_strlen(data->ori) -1)
 			data->precison = ft_strlen(data->ori) - 1;
@@ -65,7 +64,7 @@ static	void	set_d(t_data *data)
 		{
 			data->len = max_2(data->width, data->precison);
 			data->blank = data->len - data->precison;
-			if (data->len == (int)ft_strlen(data->ori) - 1)
+			if (data->len == data->precison)
 				data->len++;
 			else
 				data->blank--;
@@ -148,7 +147,7 @@ static	void	put_zero(t_data *data)
 			data->blank = data->len - 1;
 		}
 		else
-		data->blank = data->len;
+			data->blank = data->len;
 		ft_putnchar(' ', data->blank);
 	}
 }

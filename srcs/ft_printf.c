@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 14:11:07 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 12:23:50 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/20 13:45:21 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ void	set_flags(t_data *data, char *format, int size)
 		}
 		else if (format[i] == '.')
 		{
-			//if ('0' <= format[i + 1] &&  format[i + 1] <= '9')
-				data->precison = ft_atoi(format + 1 + i);
+			data->precison = ft_atoi(format + 1 + i);
 			i = i + nb_digit(format + i + 1) + 1;
 		}
 		else
@@ -108,6 +107,7 @@ int		ft_printf(const char *restrict format, ...)
 	int			i;
 	int			nbr;
 	int			j;
+	int			is_per;
 	t_data		data;
 	t_fu	set[NB_CON] = {
 		{'s',con_s},
@@ -120,6 +120,7 @@ int		ft_printf(const char *restrict format, ...)
 		{'c',con_c},
 		{'C',con_c},
 		{'u',con_u},
+		{'%',con_per},
 		{'p',con_p},
 		{'U',con_U},
 		{'x',con_x},
@@ -130,27 +131,23 @@ int		ft_printf(const char *restrict format, ...)
 	{
 		j = 0;
 		i = 0;
+		is_per = 0;
 		if( *format == '%')
 		{
-			if ((format + 1) && *(format + 1) == '%')
+			while(format + i && format[i] && !is_format(format[i]) && !is_per)
 			{
-				ft_putchar('%');
-				format = format + 2;
-				nbr++;
+				i++;
+				if (format + i && format[i] == '%')
+					is_per = 1;
 			}
-			else
+			while (format && j < NB_CON && set[j].c != format[i])
+				j++;
+			if (format && j < NB_CON)
 			{
-				while(format && format[i] && !is_format(format[i]))
-					i++;
-				while (format && j < NB_CON && set[j].c != format[i])
-					j++;
-				if (format && j < NB_CON)
-				{
-					(set[j].func)(args, &data, (char *)format, i);
+				(set[j].func)(args, &data, (char *)format, i);
 				nbr = nbr + data.len;
-				}
-				format = format + i + 1;
 			}
+			format = format + i + 1;
 		}
 		else
 		{
@@ -160,6 +157,7 @@ int		ft_printf(const char *restrict format, ...)
 	}
 	return (nbr);
 }
+
 /*
 int		main()
 {
