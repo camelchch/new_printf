@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:54:36 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/21 18:04:33 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 18:12:58 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef	struct	s_mark
 	int		i;
 	int		j;
 	int		nbr;
-	int		is_per;
+	int		per;
 }				t_mark;
 
 typedef struct s_fu

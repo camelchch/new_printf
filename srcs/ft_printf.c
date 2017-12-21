@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 14:11:07 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/21 17:57:44 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 18:30:57 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,44 +39,52 @@ t_fu	set[NB_CON] = {
 	{'X',con_XX}
 };
 
+static	void	move_i(char *format, t_mark *m)
+{
+	(m->i)++;
+	if (format + m->i && format[m->i] == '%')
+		m->per = 1;
+}
+
+static	void	move_format(char **format, t_mark *m)
+{
+	ft_putchar(**format);
+	(*format)++;
+	(m->nbr)++;
+}
+
+static	void	ini_m(t_mark *m, t_data *data)
+{
+	m->j = 0;
+	m->i = 0;
+	m->per = 0;
+	data->len = 0;
+}
+
 int		ft_printf(const char *restrict format, ...)
 {
 	va_list		args;
 	va_start(args, format);
-	int			i;
-	int			nbr;
-	int			j;
-	int			is_per;
+	t_mark		m;
 	t_data		data;
 
-	nbr = 0;
+	m.nbr = 0;
 	while (*format)
 	{
-		j = 0;
-		i = 0;
-		is_per = 0;
+		ini_m(&m,  &data);
 		if( *format == '%')
 		{
-			while(format + i && format[i] && !is_format(format[i]) && !is_per)
-			{
-				i++;
-				if (format + i && format[i] == '%')
-					is_per = 1;
-			}
-			while (format && j < NB_CON && set[j].c != format[i])
-				j++;
-			if (format && j < NB_CON)
-			{
-				(set[j].func)(args, &data, (char *)format, i);
-				nbr = nbr + data.len;
-			}
-			format = format + i + 1;
+			while(format + m.i && format[m.i] && !is_format(format[m.i]) && !m.per)
+				move_i((char *)format, &m);
+			while (format && m.j < NB_CON && set[m.j].c != format[m.i])
+				(m.j)++;
+			if (format && m.j < NB_CON)
+				(set[m.j].func)(args, &data, (char *)format, m.i);
+			m.nbr = m.nbr + data.len;
+			format = format + m.i + 1;
 		}
 		else
-		{
-			ft_putchar(*format++);
-			nbr++;
-		}
+			move_format((char **)&format, &m);
 	}
-	return (nbr);
+	return (m.nbr);
 }
