@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 14:11:07 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 17:12:45 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 12:00:11 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,3 @@ int		ft_printf(const char *restrict format, ...)
 	}
 	return (nbr);
 }
-/*
-int		main()
-{
-//t_data data;
-printf("%-25p", NULL);
-	return (0);
-}
-*/
