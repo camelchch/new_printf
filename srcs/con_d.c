@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 13:50:53 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/21 12:43:27 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 17:51:02 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	void	cast_nu_d(va_list args, t_data *data, char *format, int size)
 		data->ori = ft_itoa_max(va_arg(args, intmax_t));
 }
 
-void	put_zero(t_data *data)
+void	put_zero_d(t_data *data)
 {
 	if (ft_strchr(data->flags, '0') && data->no_pre)
 	{

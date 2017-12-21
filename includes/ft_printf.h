@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:54:36 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/21 12:43:38 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 18:04:33 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef	struct	s_data
 }			t_data;
 
 #define NB_CON	15
+typedef	struct	s_mark
+{
+	int		i;
+	int		j;
+	int		nbr;
+	int		is_per;
+}				t_mark;
 
 typedef struct s_fu
 {
@@ -75,7 +82,7 @@ void	con_XX(va_list args, t_data *data, char *foamat, int size);
 void	set_flags(t_data *fl, char *format, int size);
 void	set_print_oxu_hash(t_data *data, char *pre_fix);
 void	set_print_d(t_data *data);
-void	put_zero(t_data *data);
+void	put_zero_d(t_data *data);
 char	*ft_itoa_max(intmax_t n);
 char	*ft_itoa_unmax(uintmax_t n);
 char	*ft_itoa_short(short n);
@@ -85,6 +92,7 @@ char	*itoa_hex(uintmax_t nb, char x);
 int		max_2(int x, int y);
 int		max_3(int x, int y, int z);
 int		nb_digit(char *str);
+int		is_format(char c);
 void	ft_putnstr(char *s, int nbr);
 void	ft_putnwstr(wchar_t *s, int nbr);
 void	ft_putnchar(char c, int nbr);

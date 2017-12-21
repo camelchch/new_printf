@@ -6,7 +6,7 @@
 #    By: saxiao <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 14:39:08 by saxiao            #+#    #+#              #
-#    Updated: 2017/12/21 12:44:10 by saxiao           ###   ########.fr        #
+#    Updated: 2017/12/21 17:54:48 by saxiao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ C = gcc
 CFLAGS = -c -Wall -Wextra -Werror
 
 SRC_NAME = cacul.c con_cp.c con_d.c con_o.c con_s.c con_u.c con_x.c convert_base.c \
-	  ft_printf.c put.c set_print_oux.c set_print_d.c
+	  ft_printf.c put.c set_print_oux.c set_print_d.c set_castflag.c itoa_max.c
 LIB_SCRNAME = ft_atoi.c ft_bzero.c ft_itoa.c ft_putchar.c ft_putstr.c ft_strchr.c\
 		  ft_strlen.c ft_memset.c ft_strdup.c
 SRC_PATH = srcs/
