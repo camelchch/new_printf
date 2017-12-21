@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:49:22 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 13:20:41 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 12:14:44 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,24 +84,24 @@ void	con_p(va_list args, t_data *data, char *format, int size)
 	}
 }
 
-	void	con_per(va_list args, t_data *data, char *format, int size)
+void	con_per(va_list args, t_data *data, char *format, int size)
+{
+	(void)args;
+	set_cast(data, format, size);
+	set_flags(data, format, size);
+	data->ori = "%";
+	data->len = max_2(1, data->width);
+	if (ft_strchr(data->flags, '-'))
 	{
-		(void)args;
-		set_cast(data, format, size);
-		set_flags(data, format, size);
-		data->ori = "%";
-		data->len = max_2(1, data->width);
-		if (ft_strchr(data->flags, '-'))
-		{
-			ft_putchar('%');
-			ft_putnchar(' ', data->len - 1);
-		}
-		else
-		{
-			if (ft_strchr(data->flags, '0'))
-				ft_putnchar('0', data->len - 1);
-			else
-				ft_putnchar(' ', data->len - 1);
-			ft_putchar('%');
-		}
+		ft_putchar('%');
+		ft_putnchar(' ', data->len - 1);
 	}
+	else
+	{
+		if (ft_strchr(data->flags, '0'))
+			ft_putnchar('0', data->len - 1);
+		else
+			ft_putnchar(' ', data->len - 1);
+		ft_putchar('%');
+	}
+}

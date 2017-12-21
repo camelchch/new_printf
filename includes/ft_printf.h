@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:54:36 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/20 16:16:02 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 12:43:38 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	con_x(va_list args, t_data *data, char *foamat, int size);
 void	con_XX(va_list args, t_data *data, char *foamat, int size);
 void	set_flags(t_data *fl, char *format, int size);
 void	set_print_oxu_hash(t_data *data, char *pre_fix);
+void	set_print_d(t_data *data);
+void	put_zero(t_data *data);
 char	*ft_itoa_max(intmax_t n);
 char	*ft_itoa_unmax(uintmax_t n);
 char	*ft_itoa_short(short n);
