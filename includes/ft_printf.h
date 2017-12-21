@@ -6,7 +6,7 @@
 /*   By: saxiao <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:54:36 by saxiao            #+#    #+#             */
-/*   Updated: 2017/12/21 18:12:58 by saxiao           ###   ########.fr       */
+/*   Updated: 2017/12/21 18:45:44 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,14 @@ char	*ft_itoa_max(intmax_t n);
 char	*ft_itoa_unmax(uintmax_t n);
 char	*ft_itoa_short(short n);
 char	*ft_itoa_signchar(char n);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 char	*itoa_base(uintmax_t nb, int from, int to);
 char	*itoa_hex(uintmax_t nb, char x);
 int		max_2(int x, int y);
 int		max_3(int x, int y, int z);
 int		nb_digit(char *str);
 int		is_format(char c);
+uintmax_t	nb_dg_inbase(uintmax_t n, unsigned int base_to);
 void	ft_putnstr(char *s, int nbr);
 void	ft_putnwstr(wchar_t *s, int nbr);
 void	ft_putnchar(char c, int nbr);
